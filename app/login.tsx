@@ -7,35 +7,16 @@ import { useEffect, useState } from "react";
 import { login } from "@/api/auth";
 import { AxiosResponse } from "axios";
 import { router } from "expo-router";
+import { useSession } from "@/ctx/ctx";
 
 export default function LoginPage() {
+  const { signIn } = useSession();
   const [passwordHidden, setPasswordHidden] = useState(true);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  interface LoginResponse {
-    JwtToken: {
-      Token: string;
-      Issued: Date;
-      Expires: Date;
-    };
-    UserType: string;
-    UserId: string;
-    FullName: string;
-    MenuItems: string[];
-    Birthday: boolean;
-    TwoFactor: boolean;
-    OldUser: boolean;
-    ImpersonatorUsername: string;
-    IsImpersonating: boolean;
-  }
-  async function handleLogin() {
-    login(username, password).then(
-      (response: AxiosResponse<LoginResponse, any>) => {
-        let data = response.data;
-        console.log(data);
-        router.replace("/information");
-      }
-    );
+  function handleLogin() {
+    signIn(username, password);
+    router.replace("/information");
   }
 
   return (
@@ -45,17 +26,15 @@ export default function LoginPage() {
         <View className="flex space-y-10">
           <SchoolBanner />
           <View className="flex items-center justify-center">
-            <Text className="text-idgray text-2xl text-center">COOU</Text>
-            <Text className="text-idgray text-2xl text-center">
+            <Text className="text-idgray text-xl text-center">COOU</Text>
+            <Text className="text-idgray text-xl text-center">
               STUDENT E-ID
             </Text>
           </View>
         </View>
         <View className=" w-full h-[2px] bg-[#E7E7E7]"></View>
         <View>
-          <Text className="text-2xl text-idgray text-center">
-            Student Login
-          </Text>
+          <Text className="text-xl text-idgray text-center">Student Login</Text>
 
           <Text className="font-extralight text-idgray text-center">
             Enter your login details below
@@ -109,7 +88,7 @@ export default function LoginPage() {
           className="bg-idgreen py-3 rounded-full w-full"
           onPress={handleLogin}
         >
-          <Text className="text-2xl text-white rounded-[30px] text-center">
+          <Text className="text-xl text-white rounded-[30px] text-center">
             Login
           </Text>
         </Pressable>
