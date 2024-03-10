@@ -1,10 +1,16 @@
 import SchoolBanner from "@/components/SchoolBanner";
 import { StatusBar } from "expo-status-bar";
-import { View, Text, TextInput, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Pressable,
+  KeyboardAvoidingView,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Feathericons from "@expo/vector-icons/Feather";
 import { useEffect, useState } from "react";
-import { login } from "@/api/auth";
+import { login } from "@/api/student";
 import { AxiosResponse } from "axios";
 import { router } from "expo-router";
 import { useSession } from "@/ctx/ctx";
@@ -22,17 +28,28 @@ export default function LoginPage() {
   return (
     <SafeAreaView className="flex items-center justify-center ">
       <StatusBar style="dark" />
-      <View className="flex flex-col items-center justify-between h-[80vh] pt-10 px-10 w-full">
-        <View className="flex space-y-10">
+      <View className="w-full p-2">
+        <Pressable
+          className="w-10"
+          onPress={() => {
+            router.replace("/");
+          }}
+        >
+          <Feathericons name="chevron-left" size={40} />
+        </Pressable>
+      </View>
+      <View className="flex flex-col items-center justify-between h-[90vh] pt-8 px-10 w-full">
+        <View className="flex space-y-5">
           <SchoolBanner />
           <View className="flex items-center justify-center">
             <Text className="text-idgray text-xl text-center">COOU</Text>
             <Text className="text-idgray text-xl text-center">
-              STUDENT E-ID
+              STUDENT E-ID CARD
             </Text>
           </View>
+
+          <View className=" w-[80vw] h-[2px]   bg-[#E7E7E7]"></View>
         </View>
-        <View className=" w-full h-[2px] bg-[#E7E7E7]"></View>
         <View>
           <Text className="text-xl text-idgray text-center">Student Login</Text>
 
@@ -40,7 +57,10 @@ export default function LoginPage() {
             Enter your login details below
           </Text>
         </View>
-        <View className="flex w-full space-y-5">
+        <KeyboardAvoidingView
+          className="flex w-full space-y-5"
+          behavior="position"
+        >
           <View className="bg-[#FFFDDE] h-[60px] rounded-full border-[#EEEEEE] border px-5 text-idblack flex flex-row space-x-2">
             <View className="flex items-center justify-center">
               <Feathericons name="user" size={25} />
@@ -48,7 +68,7 @@ export default function LoginPage() {
             <TextInput
               className="flex-grow"
               textContentType="username"
-              placeholder="Enter Student email Address"
+              placeholder="Enter Student Email Address"
               placeholderTextColor={"black"}
               onChangeText={(newText) => {
                 setUsername(newText);
@@ -83,9 +103,9 @@ export default function LoginPage() {
               )}
             </Pressable>
           </View>
-        </View>
+        </KeyboardAvoidingView>
         <Pressable
-          className="bg-idgreen py-3 rounded-full w-full"
+          className="bg-idgreen py-3 my-5 rounded-full w-full"
           onPress={handleLogin}
         >
           <Text className="text-xl text-white rounded-[30px] text-center">

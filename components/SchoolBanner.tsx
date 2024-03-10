@@ -10,7 +10,7 @@ export default function SchoolBanner() {
           className="w-[120px] h-[130px]"
         />
       </View>
-      {/* <Text className="text-idgray">https://www.coou.edu.ng</Text> */}
+      <Text className="text-idgray">https://www.coou.edu.ng</Text>
     </View>
   );
 }

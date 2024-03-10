@@ -17,11 +17,11 @@ export default function Landing() {
           </Text>
         </View>
         <View className="flex w-full space-y-5">
-          <Pressable className="bg-idgreen py-3 rounded-full">
+          {/* <Pressable className="bg-idgreen py-3 rounded-full">
             <Text className="text-xl text-white rounded-[30px] text-center">
               Get Started
             </Text>
-          </Pressable>
+          </Pressable> */}
           <Link href={"/login"} asChild>
             <Pressable className="border-2 border-idgreen py-3 rounded-full">
               <Text className="text-xl text-idgreen rounded-[30px] text-center">

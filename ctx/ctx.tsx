@@ -1,6 +1,6 @@
 import React from "react";
 import { useStorageState } from "@/hooks/useStorageState";
-import { UserData, login } from "@/api/auth";
+import { UserData, login } from "@/api/student";
 import { AxiosResponse } from "axios";
 
 const AuthContext = React.createContext<{
@@ -9,8 +9,8 @@ const AuthContext = React.createContext<{
   session?: string | null;
   isLoading: boolean;
 }>({
-  signIn: () => null,
-  signOut: () => null,
+  signIn: async () => null,
+  signOut: async () => null,
   session: null,
   isLoading: false,
 });
@@ -29,7 +29,7 @@ export function SessionProvider(props: React.PropsWithChildren) {
         signIn: (username: string, password: string) => {
           login(username, password).then(
             (resp: AxiosResponse<UserData, any>) => {
-              setSession(resp.data.JwtToken.Token);
+              setSession(resp.data.data.jwtToken.token);
             }
           );
         },
