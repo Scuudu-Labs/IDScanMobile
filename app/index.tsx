@@ -6,7 +6,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Link } from "expo-router";
 export default function Landing() {
   return (
-    <SafeAreaView className="flex items-center justify-center ">
+    <SafeAreaView className="flex items-center justify-center">
       <StatusBar style="dark" />
       <View className="flex flex-col items-center justify-between h-[80vh] pt-10 px-10 w-full">
         <SchoolBanner />

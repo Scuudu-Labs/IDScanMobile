@@ -87,7 +87,6 @@ export async function login(username: String, password: String) {
 }
 
 export async function getProfile(token: String) {
-  console.log(token);
   return await axios.get(`${BASE_URL}/StudentProfile/get-student-profile`, {
     headers: {
       Authorization: `Bearer ${token}`,

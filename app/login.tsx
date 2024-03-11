@@ -39,10 +39,11 @@ export default function LoginPage() {
           <Feathericons name="chevron-left" size={40} />
         </Pressable>
       </View>
-      <View
+      <KeyboardAvoidingView
         className={`flex flex-col items-center justify-between pt-2 px-10 w-full ${
           height > 500 ? "h-[90vh] " : "h-[95vh]"
         }`}
+        behavior="height"
       >
         <View className="flex space-y-5">
           <SchoolBanner />
@@ -63,8 +64,8 @@ export default function LoginPage() {
           </Text>
         </View>
         <KeyboardAvoidingView
-          className="flex w-full space-y-5"
-          behavior="position"
+          className="flex w-full space-y-5 my-1"
+          behavior="height"
         >
           <View className="bg-[#FFFDDE] h-[60px] rounded-full border-[#EEEEEE] border px-5 text-idblack flex flex-row space-x-2">
             <View className="flex items-center justify-center">
@@ -117,7 +118,7 @@ export default function LoginPage() {
             Login
           </Text>
         </Pressable>
-      </View>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
