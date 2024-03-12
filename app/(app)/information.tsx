@@ -43,7 +43,7 @@ export default function InformationPage() {
               <Feathericons name="chevron-left" size={40} />
             </Pressable>
           </View>
-          <View className="flex flex-col items-center justify-between h-[90vh] pt-10 px-5 w-full">
+          <View className="flex flex-col items-center justify-between h-[90vh] pt-2 px-5 w-full">
             <View className="w-full flex flex-row items-center space-x-3">
               <SchoolBannerSmall />
               <Text className="text">COOU</Text>
@@ -56,7 +56,7 @@ export default function InformationPage() {
                   }}
                   style={{
                     width: width - 100,
-                    height: 310,
+                    height: 300,
                     maxWidth: 350,
                     borderRadius: 20,
                   }}
@@ -69,7 +69,7 @@ export default function InformationPage() {
             )}
 
             <View className="flex w-full">
-              <View className="flex space-y-5">
+              <View className="flex space-y-2">
                 <Text className=" text-lg">Student's Information</Text>
                 <View className=" w-full h-[2px] bg-[#E7E7E7]"></View>
               </View>
@@ -133,16 +133,16 @@ export default function InformationPage() {
               )}
             </View>
 
-            <View className="flex flex-row w-full justify-between">
+            <View className="flex flex-row w-full justify-between mb-5">
               <Link href={"/qrcode"} asChild>
-                <Pressable className="bg-idgreen py-3 rounded-full flex-grow max-w-[180px] mr-3">
+                <Pressable className="bg-idgreen py-2 rounded-full flex-grow max-w-[180px] mr-3">
                   <Text className="text-lg text-white rounded-[30px] text-center">
                     QR CODE
                   </Text>
                 </Pressable>
               </Link>
 
-              <Pressable className="border-2 border-idgreen py-3 rounded-full flex-grow max-w-[180px]">
+              <Pressable className="border-2 border-idgreen py-2 rounded-full flex-grow max-w-[180px]">
                 <Text className="text-lg text-idgreen rounded-[30px] text-center">
                   View Details
                 </Text>
