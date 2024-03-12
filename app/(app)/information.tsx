@@ -97,7 +97,7 @@ export default function InformationPage() {
                         Faculty
                       </Text>
                       <Text className="text-lg">
-                        {userInfo?.data.programmeDetail.department}
+                        {userInfo?.data.programmeDetail.faculty}
                       </Text>
                     </View>
                   </View>

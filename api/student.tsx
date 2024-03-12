@@ -1,5 +1,6 @@
 import axios from "axios";
 let BASE_URL = "https://schmgrcoou-dev.azurewebsites.net/api/";
+var forge = require("node-forge");
 // "/api/StudentProfile/get-student-profile"
 
 export interface UserData {
@@ -47,6 +48,7 @@ export interface UserInfo {
       jambRegNo: string;
       department: string;
       departmentId: string;
+      faculty: string;
       departmentOptionId: string;
       schoolProgrammeId: number;
       entryYear: number;

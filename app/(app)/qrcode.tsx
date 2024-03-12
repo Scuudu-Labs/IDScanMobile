@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { UserInfo, getProfile } from "@/api/student";
 import { AxiosResponse } from "axios";
 import LoadingBanner from "@/components/Loading";
-
+import forge from "node-forge";
 export default function QRCodePage() {
   const { width, height } = useWindowDimensions();
   const [isLoading, setIsLoading] = useState(false);
@@ -24,54 +24,8 @@ export default function QRCodePage() {
 
   useEffect(() => {
     if (session) {
-      setIsLoading(true);
-      getProfile(session).then((resp: AxiosResponse<UserInfo, any>) => {
-        setUserInfo(resp.data);
-        setIsLoading(false);
-      });
-    }
-  }, []);
+      QRUrl.searchParams.append("token", session);
 
-  useEffect(() => {
-    if (userInfo) {
-      QRUrl.searchParams.append(
-        "first_name",
-        userInfo.data.personalData.firstname
-      );
-
-      QRUrl.searchParams.append(
-        "middle_name",
-        userInfo.data.personalData.middlename
-      );
-
-      QRUrl.searchParams.append(
-        "last_name",
-        userInfo.data.personalData.surname
-      );
-
-      QRUrl.searchParams.append(
-        "school",
-        "Chukwuemeka Odumegwu Ojukwu University"
-      );
-
-      QRUrl.searchParams.append(
-        "department",
-        userInfo.data.programmeDetail.department
-      );
-
-      QRUrl.searchParams.append(
-        "program",
-        userInfo.data.programmeDetail.department
-      );
-
-      QRUrl.searchParams.append(
-        "regno",
-        userInfo.data.programmeDetail.jambRegNo
-      );
-
-      //   QRUrl.searchParams.append("photo", userInfo.data.personalData.passport);
-
-      console.log(QRUrl.href);
       setQRText(QRUrl.href);
     }
   }, [userInfo]);
